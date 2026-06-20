@@ -1,0 +1,42 @@
+{
+  "name": "pathway-ai",
+  "version": "0.1.0",
+  "private": true,
+  "scripts": {
+    "dev": "next dev",
+    "build": "next build",
+    "start": "next start",
+    "lint": "eslint"
+  },
+  "dependencies": {
+    "@sentry/nextjs": "^10.57.0",
+    "@sparticuz/chromium-min": "^149.0.0",
+    "@supabase/ssr": "^0.10.3",
+    "@supabase/supabase-js": "^2.105.4",
+    "@upstash/ratelimit": "^2.0.8",
+    "@vercel/analytics": "^2.0.1",
+    "@vercel/kv": "^3.0.0",
+    "@vercel/speed-insights": "^2.0.0",
+    "next": "^16.2.9",
+    "pdfmake": "^0.3.9",
+    "puppeteer": "^25.1.0",
+    "puppeteer-core": "^25.1.0",
+    "react": "19.2.4",
+    "react-dom": "19.2.4",
+    "react-toastify": "^11.1.0"
+  },
+  "devDependencies": {
+    "@tailwindcss/postcss": "^4",
+    "@types/node": "^20",
+    "@types/pdfmake": "^0.3.3",
+    "@types/react": "^19",
+    "@types/react-dom": "^19",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.6",
+    "tailwindcss": "^4",
+    "typescript": "^5"
+  },
+  "overrides": {
+    "postcss": "8.5.14"
+  }
+}

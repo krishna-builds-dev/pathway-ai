@@ -1,0 +1,379 @@
+@import url('https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined');
+@import "tailwindcss";
+
+@layer base {
+  /* 🏆 PRO SELECTION ENGINE: Automatic contrast for all backgrounds */
+
+  /* 1. Global Default (For light/surface backgrounds) */
+  ::selection {
+    @apply bg-primary/10 text-primary;
+  }
+
+  /* 2. Dynamic Contrast: Matches SOLID primary, secondary, or tertiary backgrounds 
+     Pro Style: White highlight with brand purple text */
+  [class*="bg-primary"]:not([class*="/"])::selection,
+  [class*="bg-secondary"]:not([class*="/"])::selection,
+  [class*="bg-tertiary"]:not([class*="/"])::selection,
+  [class*="bg-error"]:not([class*="/"])::selection {
+    background-color: #ffffff !important;
+    color: var(--color-primary) !important;
+  }
+
+  /* 3. Alpha-Aware Fix: Specifically for light tinted backgrounds (e.g., bg-primary/10) */
+  [class*="/"]::selection {
+    @apply bg-primary/20 text-primary;
+  }
+
+  /* 4. Surface Fix: Clean highlights for Bento container types */
+  [class*="bg-surface-container"]::selection {
+    @apply bg-primary/10 text-primary;
+  }
+
+  .select-invert::selection {
+    background-color: #ffffff !important;
+    color: var(--color-primary) !important;
+  }
+
+
+
+
+
+}
+
+@theme {
+  /* Colors: Convert your named colors to use the --color-* namespace */
+  --color-primary-fixed: #e2dfff;
+  --color-inverse-on-surface: #ecf1ff;
+  --color-surface-container: #e7eeff;
+  --color-inverse-primary: #c3c0ff;
+  --color-secondary-fixed: #dbe1ff;
+  --color-error-container: #ffdad6;
+  --color-surface-container-high: #dee8ff;
+  --color-surface-dim: #cfdaf2;
+  --color-surface-variant: #d8e3fb;
+  --color-tertiary-fixed-dim: #ffb695;
+  --color-on-primary-fixed-variant: #3323cc;
+  --color-secondary-fixed-dim: #b4c5ff;
+  --color-secondary: #0051d5;
+  --color-tertiary-container: #a44100;
+  --color-surface-bright: #f9f9ff;
+  --color-on-tertiary-container: #ffd2be;
+  --color-surface-tint: #4d44e3;
+  --color-tertiary: #7e3000;
+  --color-on-error-container: #93000a;
+  --color-on-background: #111c2d;
+  --color-on-primary-fixed: #0f0069;
+  --color-tertiary-fixed: #ffdbcc;
+  --color-on-surface-variant: #464555;
+  --color-on-secondary-container: #fefcff;
+  --color-outline-variant: #c7c4d8;
+  --color-on-secondary-fixed: #00174b;
+  --color-background: #f9f9ff;
+  --color-error: #ba1a1a;
+  --color-on-primary: #ffffff;
+  --color-on-primary-container: #dad7ff;
+  --color-on-secondary-fixed-variant: #003ea8;
+  --color-primary: #3525cd;
+  --color-surface-container-lowest: #ffffff;
+  --color-inverse-surface: #263143;
+  --color-on-error: #ffffff;
+  --color-outline: #777587;
+  --color-surface-container-highest: #d8e3fb;
+  --color-on-tertiary: #ffffff;
+  --color-primary-fixed-dim: #c3c0ff;
+  --color-primary-container: #4f46e5;
+  --color-secondary-container: #316bf3;
+  --color-surface: #f9f9ff;
+  --color-on-tertiary-fixed: #351000;
+  --color-on-surface: #111c2d;
+  --color-surface-container-low: #f0f3ff;
+  --color-on-secondary: #ffffff;
+  --color-on-tertiary-fixed-variant: #7b2f00;
+
+  /* Spacing */
+  --spacing-stack-sm: 12px;
+  --spacing-container-max: 1280px;
+  --spacing-gutter: 24px;
+  --spacing-base: 8px;
+  --spacing-stack-md: 24px;
+  --spacing-margin: 32px;
+  --spacing-stack-lg: 48px;
+
+  /* Font Sizes */
+  --text-body-md: 16px;
+  --text-body-md--line-height: 1.5;
+  --text-body-md--letter-spacing: 0;
+  --text-body-md--font-weight: 400;
+
+  --text-label-caps: 12px;
+  --text-label-caps--line-height: 1;
+  --text-label-caps--letter-spacing: 0.05em;
+  --text-label-caps--font-weight: 600;
+
+  --text-display-xl: 64px;
+  --text-display-xl--line-height: 1.1;
+  --text-display-xl--letter-spacing: -0.04em;
+  --text-display-xl--font-weight: 700;
+
+  --text-body-lg: 18px;
+  --text-body-lg--line-height: 1.6;
+  --text-body-lg--letter-spacing: 0;
+  --text-body-lg--font-weight: 400;
+
+  --text-h1-marketing: 48px;
+  --text-h1-marketing--line-height: 1.2;
+  --text-h1-marketing--letter-spacing: -0.02em;
+  --text-h1-marketing--font-weight: 600;
+
+  --text-h2-dashboard: 24px;
+  --text-h2-dashboard--line-height: 1.4;
+  --text-h2-dashboard--letter-spacing: -0.01em;
+  --text-h2-dashboard--font-weight: 600;
+
+  --text-ui-sm: 14px;
+  --text-ui-sm--line-height: 1.4;
+  --text-ui-sm--letter-spacing: 0;
+  --text-ui-sm--font-weight: 500;
+
+  /* --- MERGED FROM NEW CONFIGURATION --- */
+
+  /* Border Radius */
+  --radius-DEFAULT: 0.25rem;
+  --radius-lg: 0.5rem;
+  --radius-xl: 0.75rem;
+  --radius-2xl: 16px;
+  --radius-full: 9999px;
+
+  /* Additional Spacing */
+  --spacing-margin-mobile: 16px;
+  --spacing-max-width: 1280px;
+  --spacing-margin-desktop: 64px;
+  /* (gutter and base were already 24px and 8px respectively, or handled above) */
+
+  /* Additional Font Families */
+  --font-headline-lg: var(--font-geist), sans-serif;
+  --font-headline-md: var(--font-geist), sans-serif;
+  --font-display-lg: var(--font-geist), sans-serif;
+  --font-display-lg-mobile: var(--font-geist), sans-serif;
+  --font-body-lg-font: var(--font-inter), sans-serif;
+  --font-label-md: var(--font-inter), sans-serif;
+  --font-body-sm-font: var(--font-inter), sans-serif;
+
+  /* Additional Font Sizes */
+  --text-headline-lg: 32px;
+  --text-headline-lg--line-height: 40px;
+  --text-headline-lg--letter-spacing: -0.01em;
+  --text-headline-lg--font-weight: 600;
+
+  --text-headline-md: 24px;
+  --text-headline-md--line-height: 32px;
+  --text-headline-md--font-weight: 600;
+
+  --text-display-lg: 56px;
+  --text-display-lg--line-height: 64px;
+  --text-display-lg--letter-spacing: -0.02em;
+  --text-display-lg--font-weight: 700;
+
+  --text-display-lg-mobile: 40px;
+  --text-display-lg-mobile--line-height: 48px;
+  --text-display-lg-mobile--letter-spacing: -0.02em;
+  --text-display-lg-mobile--font-weight: 700;
+
+  --text-body-sm: 14px;
+  --text-body-sm--line-height: 20px;
+  --text-body-sm--font-weight: 400;
+
+  --text-label-md: 12px;
+  --text-label-md--line-height: 16px;
+  --text-label-md--letter-spacing: 0.05em;
+  --text-label-md--font-weight: 500;
+}
+
+/* Apply the darkMode: 'class' setting */
+.dark {
+  color-scheme: dark;
+}
+
+
+
+/* Your existing custom classes */
+.material-symbols-outlined {
+  font-variation-settings: 'FILL' 0, 'wght' 400, 'GRAD' 0, 'opsz' 24;
+}
+
+body {
+  font-family: var(--font-inter), sans-serif;
+  background-color: #f9f9ff;
+  color: #111c2d;
+}
+
+.glass-card {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(226, 232, 240, 0.8);
+}
+
+.comparison-gradient-au {
+  background: linear-gradient(135deg, rgba(53, 37, 205, 0.05) 0%, rgba(53, 37, 205, 0) 100%);
+}
+
+.comparison-gradient-nz {
+  background: linear-gradient(135deg, rgba(0, 81, 213, 0.05) 0%, rgba(0, 81, 213, 0) 100%);
+}
+
+.city-card-shadow {
+  box-shadow: 0px 4px 20px rgba(0, 0, 0, 0.05);
+}
+
+.glass-filter {
+  backdrop-filter: blur(12px);
+  background: rgba(255, 255, 255, 0.8);
+}
+
+.sop-preview-paper {
+  box-shadow: 0 4px 20px rgba(79, 70, 229, 0.05);
+  background-image: linear-gradient(to bottom, #ffffff 0%, #fdfdff 100%);
+}
+
+.glass-panel {
+  background: rgba(255, 255, 255, 0.7);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(199, 196, 216, 0.5);
+}
+
+.bg-mesh {
+  background-color: #f9f9ff;
+  background-image: radial-gradient(at 0% 0%, rgba(79, 70, 229, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(0, 81, 213, 0.05) 0px, transparent 50%);
+}
+
+.policy-content h2 {
+  font-family: var(--font-geist), sans-serif;
+  font-size: 24px;
+  font-weight: 600;
+  margin-top: 48px;
+  margin-bottom: 16px;
+  color: #3525cd;
+}
+
+.policy-content p {
+  margin-bottom: 24px;
+  /* color: #464555; */
+  line-height: 1.6;
+}
+
+.toc-link.active {
+  color: #3525cd;
+  font-weight: 600;
+  border-left: 2px solid #3525cd;
+  padding-left: 12px;
+}
+
+.font-geist {
+  font-family: var(--font-geist), sans-serif;
+}
+
+.glass-header {
+  background: rgba(255, 255, 255, 0.6);
+  backdrop-filter: blur(20px) saturate(180%);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 4px 30px rgba(0, 0, 0, 0.03);
+}
+
+@keyframes magnetic-float {
+
+  0%,
+  100% {
+    transform: translate(0, 0) rotate(0deg);
+  }
+
+  25% {
+    transform: translate(2px, -2px) rotate(2deg);
+  }
+
+  50% {
+    transform: translate(-1px, -4px) rotate(-1deg);
+  }
+
+  75% {
+    transform: translate(-2px, -1px) rotate(1deg);
+  }
+}
+
+.magnetic-hover:hover {
+  animation: magnetic-float 2s ease-in-out infinite;
+}
+
+.text-glow-hover:hover {
+  text-shadow: 0 0 15px rgba(53, 37, 205, 0.3);
+}
+
+.nav-item-refined {
+  letter-spacing: 0.02em;
+  font-weight: 500;
+  transition: all 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.mesh-gradient {
+  background-color: #fcf8ff;
+  background-image:
+    radial-gradient(at 0% 0%, rgba(53, 37, 205, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 0%, rgba(0, 81, 213, 0.05) 0px, transparent 50%),
+    radial-gradient(at 100% 100%, rgba(53, 37, 205, 0.05) 0px, transparent 50%),
+    radial-gradient(at 0% 100%, rgba(0, 81, 213, 0.05) 0px, transparent 50%);
+}
+
+.tab-content {
+  display: none;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.tab-content.active {
+  display: block;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.no-scrollbar::-webkit-scrollbar {
+  display: none;
+}
+
+.no-scrollbar {
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+/* Make all toasts responsive */
+.Toastify__toast {
+  max-width: 90vw !important;
+  width: auto;
+  min-height: auto;
+  font-size: 0.875rem;
+  /* text-sm */
+}
+
+@media (min-width: 640px) {
+  .Toastify__toast {
+    max-width: 28rem !important;
+    /* max-w-md */
+    font-size: 1rem;
+    /* text-base */
+  }
+}
+
+/* Ensure container doesn't overflow */
+.Toastify__toast-container {
+  width: auto;
+  max-width: 100vw;
+  padding: 8px;
+}
