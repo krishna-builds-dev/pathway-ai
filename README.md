@@ -23,12 +23,4 @@ npm run dev
 ```
 
 Open [http://localhost:3000](http://localhost:3000) to see the application.
-
-## 📖 Detailed Documentation
-
-For a deep dive into the architecture, database schema, AI integration, and development workflows, please refer to the [DOCUMENTATION.md](./DOCUMENTATION.md) file.
-
-
 ---
-
-Built with ❤️ for international students.
