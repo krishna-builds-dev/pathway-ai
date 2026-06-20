@@ -76,6 +76,6 @@ public/         Static assets
 
 ## Built By
 
-[Krishna Shrestha](https://github.com/krishna-builds-dev) — Full Stack Developer
+[Krishna builds dev](https://github.com/krishna-builds-dev) — Full Stack Developer
   
-Open for freelance work → [krishna011.com.np](https://www.krishna011.com.np)
+Open for freelance work → [krishna builds dev](https://www.krishna011.com.np)
