@@ -55,7 +55,7 @@ export default function HeaderClient({ initialUser }: { initialUser: User | null
             {/* Logo */}
             <Link href="/" className="flex items-center gap-2">
                 <PathwayLogo />
-                <span className="font-bold text-on-surface">Pathway</span>
+                <span className="font-bold text-on-surface">Pathway AI</span>
             </Link>
 
             {/* Right Side */}

@@ -1,5 +1,5 @@
 // types/index.ts
-// Shared TypeScript types across the Pathway application
+// Shared TypeScript types across the Pathway AI application
 
 export type BadgeType = 'primary' | 'secondary' | 'warning' | 'danger' | 'success';
 

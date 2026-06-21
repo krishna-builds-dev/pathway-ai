@@ -15,7 +15,7 @@ interface CTABannerProps {
 export default function CTABanner({
     titleLoggedOut = "Start your journey today",
     titleLoggedIn = "Ready to continue?",
-    descriptionLoggedOut = "Join students from across Nepal and beyond planning their future in Australia and New Zealand with Pathway.",
+    descriptionLoggedOut = "Join students from across Nepal and beyond planning their future in Australia and New Zealand with Pathway AI.",
     descriptionLoggedIn = "Your personalized study plan and university shortlists are waiting. Head to your dashboard to pick up right where you left off."
 }: CTABannerProps = {}) {
     const { user } = useAuth();

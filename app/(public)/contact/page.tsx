@@ -21,7 +21,7 @@ const FAQS: FaqItem[] = [
     {
         question: "How long does the Australia student visa process take?",
         answer:
-            "Most Subclass 500 visas are processed within 4-6 weeks, however, it varies based on your country of origin and completeness of documentation. Pathway helps you track every step.",
+            "Most Subclass 500 visas are processed within 4-6 weeks, however, it varies based on your country of origin and completeness of documentation.",
     },
     {
         question: "Can I work while studying in New Zealand?",
@@ -354,10 +354,10 @@ export default function Contact() {
                                             Email Support
                                         </p>
                                         <a
-                                            href="mailto:support@pathway.com"
+                                            href="mailto:support@pathway-ai.com"
                                             className="text-xs lg:text-body-md text-on-surface-variant hover:text-primary transition-colors"
                                         >
-                                            support@pathway.com
+                                            support@pathway-ai.com
                                         </a>
                                     </div>
                                 </div>

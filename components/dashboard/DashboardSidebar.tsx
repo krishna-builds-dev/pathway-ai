@@ -45,7 +45,7 @@ export default function DashboardSidebar({ onClose }: { onClose?: () => void }) 
           <PathwayLogo className="w-10 h-10" />
           <div>
             <h1 className="font-geist text-[18px] font-bold text-[#1e00a9] leading-tight">
-              Pathway
+              Pathway AI
             </h1>
             <p className="text-[11px] text-on-surface-variant opacity-70">
               Academic Excellence

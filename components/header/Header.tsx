@@ -88,7 +88,7 @@ export default function Header() {
                             <PathwayLogo className="w-8 h-8" />
                         </div>
                         <div className="font-geist text-2xl md:text-h2-dashboard font-bold text-primary">
-                            Pathway
+                            Pathway AI
                         </div>
                     </Link>
 

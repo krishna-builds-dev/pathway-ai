@@ -9,10 +9,10 @@ export default function Footer() {
                 <div className="flex flex-col gap-2 text-center md:text-left">
                     <div className="flex items-center gap-2 justify-center md:justify-start">
                         <PathwayLogo className="w-8 h-8" />
-                        <div className="text-xl lg:text-h2-dashboard font-bold text-primary">Pathway</div>
+                        <div className="text-xl lg:text-h2-dashboard font-bold text-primary">Pathway AI</div>
                     </div>
                     <p className="text-xs lg:text-body-md text-on-surface-variant max-w-xs">
-                        © {new Date().getFullYear()} Pathway
+                        © {new Date().getFullYear()} Pathway AI
                     </p>
                 </div>
 

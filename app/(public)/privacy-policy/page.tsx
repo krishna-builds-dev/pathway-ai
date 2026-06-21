@@ -64,7 +64,7 @@ export default function PrivacyPolicy() {
                         Legal Center
                     </h1>
                     <p className="text-sm lg:text-body-lg text-on-surface-variant">
-                        Transparency is the foundation of trust. Learn how Pathway protects your journey and your data.
+                        Transparency is the foundation of trust. Learn how Pathway AI protects your journey and your data.
                     </p>
                 </div>
             </section>
@@ -128,12 +128,12 @@ export default function PrivacyPolicy() {
                         <h2 className="text-xl lg:text-2xl font-bold text-on-surface mb-4">Introduction</h2>
                         <p className="text-sm lg:text-base text-on-surface-variant mb-4">Last Updated: April {new Date().getFullYear()}</p>
                         <p className="text-sm lg:text-base text-on-surface-variant mb-4">
-                            Welcome to Pathway. We are committed to protecting your personal information and your right to
+                            Welcome to Pathway AI. We are committed to protecting your personal information and your right to
                             privacy. This Privacy Policy applies to all information collected through our website, mobile
                             application, and any related services, sales, marketing, or events.
                         </p>
                         <p className="text-sm lg:text-base text-on-surface-variant mb-4">
-                            When you use Pathway to navigate your educational journey to Australia or New Zealand, you
+                            When you use Pathway AI to navigate your educational journey to Australia or New Zealand, you
                             trust us with your personal data. We take this responsibility seriously and have designed our
                             systems to prioritize your security and data sovereignty.
                         </p>
@@ -163,10 +163,10 @@ export default function PrivacyPolicy() {
                                 <span className="text-xs lg:text-label-caps">Data Processing Disclosure</span>
                             </div>
                             <h3 className="text-lg lg:text-h2-dashboard font-bold mb-3">
-                                How Pathway processes your data
+                                How Pathway AI processes your data
                             </h3>
                             <p className="text-xs lg:text-ui-sm text-on-surface-variant max-w-2xl">
-                                Pathway uses rule-based tools to match your academic profile against university requirements and generate document templates. Your data stays in your account and is only processed to provide the features you use — SOP building, resume formatting, and visa checklist generation.
+                                Pathway AI uses rule-based tools to match your academic profile against university requirements and generate document templates. Your data stays in your account and is only processed to provide the features you use — SOP building, resume formatting, and visa checklist generation.
                             </p>
                         </div>
                         <div className="absolute -right-12 -bottom-12 opacity-5">
@@ -208,7 +208,7 @@ export default function PrivacyPolicy() {
                         </p>
                         <p className="text-sm lg:text-base text-on-surface-variant mb-4">
                             We use AES-256 encryption for data at rest and TLS 1.3 for data in transit. Access to your
-                            personal information is strictly limited to authorized Pathway personnel and partners who
+                            personal information is strictly limited to authorized Pathway AI personnel and partners who
                             require access to perform their professional duties.
                         </p>
                     </div>

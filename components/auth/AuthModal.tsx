@@ -12,7 +12,7 @@ export default function AuthModal({
     isOpen,
     onClose,
     title = "Start Your Journey",
-    description = "Sign in or create an account to start building your university shortlist, comparing fees, and planning your PR pathway dashboard.",
+    description = "Sign in or create an account to start building your university shortlist, comparing fees, and planning your path to permanent residency.",
     icon = "rocket_launch"
 }: AuthModalProps) {
     if (!isOpen) return null;

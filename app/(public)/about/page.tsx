@@ -81,7 +81,7 @@ export default function AboutPage() {
             </h2>
             <p className="text-sm lg:text-body-lg text-on-surface-variant mb-6 leading-relaxed">
               We believe that talent is universal, but opportunity is not.
-              Pathway was founded to bridge the gap between student dreams
+              Pathway AI was founded to bridge the gap between student dreams
               and global academic opportunities through precision, transparency,
               and trust.
             </p>
