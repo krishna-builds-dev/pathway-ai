@@ -5,7 +5,7 @@ import Link from "next/link";
 import AuthModal from "@/components/auth/AuthModal";
 import { useAuth } from "@/components/providers/AuthProvider";
 
-export default function AiHero() {
+export default function Hero() {
     const { user } = useAuth();
     const [showAuthModal, setShowAuthModal] = useState(false);
 
@@ -20,34 +20,33 @@ export default function AiHero() {
                         className="material-symbols-outlined text-[18px]"
                         style={{ fontVariationSettings: "'FILL' 1" }}
                     >
-                        stars
+                        auto_awesome
                     </span>
                     <span className="text-xs sm:text-sm font-medium">
-                        50,000+ students guided
+                        Smart Application Tools
                     </span>
                 </div>
 
                 {/* Heading */}
                 <h1 className="text-4xl sm:text-5xl lg:text-6xl xl:text-7xl font-bold text-on-background mb-4 sm:mb-6 max-w-4xl mx-auto leading-tight">
                     Master Your Application with{" "}
-                    <span className="text-primary">AI</span>
+                    <span className="text-primary">Smart Tools</span>
                 </h1>
 
                 {/* Description */}
                 <p className="text-base sm:text-lg lg:text-xl text-on-surface-variant mb-8 sm:mb-12 max-w-2xl mx-auto leading-relaxed">
-                    Generate professional SOPs, resumes, and visa checklists in minutes.
-                    Our intelligent engine understands university requirements across
-                    Australia and New Zealand.
+                    Build your SOP, resume, and visa checklist step by step with our guided tools
+                    — tailored to university requirements across Australia and New Zealand.
                 </p>
 
                 {/* CTA */}
                 <div className="flex flex-col sm:flex-row justify-center gap-4">
                     {user ? (
                         <Link
-                            href="/dashboard/ai"
+                            href="/dashboard/advisor"
                             className="group bg-primary-container text-on-primary px-6 sm:px-8 py-3 sm:py-4 rounded-xl shadow-lg hover:opacity-95 transition-all active:scale-95 flex items-center justify-center"
                         >
-                            Ask AI Advisor
+                            Ask Career Advisor
                             <span className="ms-2 material-symbols-outlined text-xl transition-transform group-hover:translate-x-1">
                                 arrow_forward
                             </span>

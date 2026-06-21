@@ -1,5 +1,5 @@
 import Link from 'next/link';
-import { LanguageIcon, MailIcon, PathwayLogo } from '../icon/Icons';
+import { PathwayLogo } from '../icon/Icons';
 
 export default function Footer() {
     return (
@@ -8,11 +8,11 @@ export default function Footer() {
                 {/* Logo & Copyright */}
                 <div className="flex flex-col gap-2 text-center md:text-left">
                     <div className="flex items-center gap-2 justify-center md:justify-start">
-                        <PathwayLogo className="w-8 h-8 " />
-                        <div className="text-xl lg:text-h2-dashboard font-bold text-primary">Pathway AI</div>
+                        <PathwayLogo className="w-8 h-8" />
+                        <div className="text-xl lg:text-h2-dashboard font-bold text-primary">Pathway</div>
                     </div>
                     <p className="text-xs lg:text-body-md text-on-surface-variant max-w-xs">
-                        © {new Date().getFullYear()} Pathway AI
+                        © {new Date().getFullYear()} Pathway
                     </p>
                 </div>
 

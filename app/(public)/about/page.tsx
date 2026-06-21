@@ -81,14 +81,14 @@ export default function AboutPage() {
             </h2>
             <p className="text-sm lg:text-body-lg text-on-surface-variant mb-6 leading-relaxed">
               We believe that talent is universal, but opportunity is not.
-              Pathway AI was founded to bridge the gap between student dreams
+              Pathway was founded to bridge the gap between student dreams
               and global academic opportunities through precision, transparency,
               and trust.
             </p>
             <p className="text-sm lg:text-body-lg text-on-surface-variant leading-relaxed">
-              By leveraging advanced AI models and expert regulatory knowledge,
-              we&apos;ve built a platform that eliminates the guesswork from visa
-              applications, allowing students to focus on what truly matters:
+              By combining smart rule-based tools with up-to-date regulatory
+              knowledge, we&apos;ve built a platform that reduces the guesswork in
+              visa applications, allowing students to focus on what truly matters:
               their education.
             </p>
           </div>
@@ -139,8 +139,8 @@ export default function AboutPage() {
               </div>
               <h3 className="text-lg lg:text-headline-md font-bold text-on-surface mb-3">Innovation</h3>
               <p className="text-sm lg:text-body-md text-on-surface-variant">
-                Using state-of-the-art AI, we continuously evolve our algorithms
-                to keep pace with changing global regulations.
+                We continuously refine our tools and logic to keep pace with
+                changing global regulations and student needs.
               </p>
             </div>
             <div className="bg-surface-container-lowest p-6 lg:p-8 rounded-2xl border border-outline-variant/20 hover:shadow-md transition-shadow">

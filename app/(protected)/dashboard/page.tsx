@@ -110,7 +110,7 @@ export default function DashboardPage() {
     }, [user, supabase]);
 
     const firstName = profile?.full_name?.split(" ")[0] || user?.user_metadata?.full_name?.split(" ")[0] || "there";
-    const destination = profile?.target_destination || "Australia";
+    const destination = profile?.target_destination || "Target Country";
     const intakeDate = profile?.intake_date || "Not set";
     const interestedCoursesCount = profile?.interested_courses?.length || 0;
     const profileCompletePercent = useMemo(() => {
@@ -184,7 +184,7 @@ export default function DashboardPage() {
                         </Link>
                         <button
                             onClick={() => setShowProfileBanner(false)}
-                            className="text-on-surface-variant hover:text-primary transition-colors"
+                            className="text-on-surface-variant hover:text-primary transition-colors cursor-pointer"
                             aria-label="Dismiss"
                         >
                             <span className="material-symbols-outlined">close</span>
@@ -288,9 +288,9 @@ export default function DashboardPage() {
                             Chat
                         </span>
                     </div>
-                    <p className="text-xs font-medium text-on-surface">AI Advisor</p>
+                    <p className="text-xs font-medium text-on-surface">Career Advisor</p>
                     <p className="text-xs text-on-surface-variant/60 mt-1 leading-relaxed">
-                        Get instant, personalised visa guidance
+                        Get personalised guidance for your study path
                     </p>
                 </Link>
             </section>
@@ -298,7 +298,7 @@ export default function DashboardPage() {
             {/* AI Tools – responsive grid */}
             <section>
                 <div className="flex items-center justify-between mb-5">
-                    <h3 className="font-geist text-lg md:text-xl font-bold text-[#1b1b24]">Your AI-Powered Tools</h3>
+                    <h3 className="font-geist text-lg md:text-xl font-bold text-[#1b1b24]">Your Smart Tools</h3>
                 </div>
                 <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 gap-6">
                     {/* SOP Builder */}
@@ -308,7 +308,7 @@ export default function DashboardPage() {
                         </div>
                         <h4 className="font-geist text-base lg:text-lg font-bold mb-2 text-[#1b1b24]">SOP Builder</h4>
                         <p className="text-sm text-on-surface-variant mb-6 lg:mb-8 leading-relaxed flex-1">
-                            Craft compelling Statements of Purpose tailored to your target universities with our context-aware AI engine.
+                            Craft compelling Statements of Purpose tailored to your target universities with our smart, structured templates.
                         </p>
                         <Link
                             href="/dashboard/sop"
@@ -325,7 +325,7 @@ export default function DashboardPage() {
                         </div>
                         <h4 className="font-geist text-base lg:text-lg font-bold mb-2 text-[#1b1b24]">Resume Builder</h4>
                         <p className="text-sm text-on-surface-variant mb-6 lg:mb-8 leading-relaxed flex-1">
-                            Convert your experience into a professional format compliant with AU/NZ admission board standards automatically.
+                            Convert your experience into a professional format compliant with admission board standards automatically.
                         </p>
                         <Link
                             href="/dashboard/resume"

@@ -21,7 +21,7 @@ const FAQS: FaqItem[] = [
     {
         question: "How long does the Australia student visa process take?",
         answer:
-            "Most Subclass 500 visas are processed within 4-6 weeks, however, it varies based on your country of origin and completeness of documentation. Pathway AI helps you track every step.",
+            "Most Subclass 500 visas are processed within 4-6 weeks, however, it varies based on your country of origin and completeness of documentation. Pathway helps you track every step.",
     },
     {
         question: "Can I work while studying in New Zealand?",
@@ -116,9 +116,7 @@ export default function Contact() {
                         <span className="text-primary italic">Together</span>
                     </h1>
                     <p className="text-sm lg:text-body-lg text-on-surface-variant">
-                        Whether you're curious about visa requirements, university
-                        applications, or settling into a new city, our experts and AI
-                        advisors are ready to guide you.
+                        Whether you're curious about visa requirements, university applications, or settling into a new city, our team is ready to guide you.
                     </p>
                 </div>
 
@@ -356,10 +354,10 @@ export default function Contact() {
                                             Email Support
                                         </p>
                                         <a
-                                            href="mailto:support@pathwayai.com"
+                                            href="mailto:support@pathway.com"
                                             className="text-xs lg:text-body-md text-on-surface-variant hover:text-primary transition-colors"
                                         >
-                                            support@pathwayai.com
+                                            support@pathway.com
                                         </a>
                                     </div>
                                 </div>

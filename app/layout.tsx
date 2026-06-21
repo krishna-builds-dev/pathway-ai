@@ -32,7 +32,7 @@ export default async function RootLayout({
   return (
     <html lang="en" className={`${geist.variable} ${inter.variable}`}>
       <head>
-        <meta name="apple-mobile-web-app-title" content="Pathway-ai" />
+        <meta name="apple-mobile-web-app-title" content="Pathway" />
       </head>
       <body>
         <ScrollProgressBar />

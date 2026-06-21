@@ -1,6 +1,5 @@
 import {
   FeatureHighlights,
-  FounderStory,
   Hero,
   ProblemSection,
   SolutionSection,
@@ -17,7 +16,6 @@ export default function Home() {
       <ProblemSection />
       <SolutionSection />
       <FeatureHighlights />
-      <FounderStory />
       <CTABanner />
     </main>
   );

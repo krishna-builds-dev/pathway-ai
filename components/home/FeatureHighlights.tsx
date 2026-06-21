@@ -1,5 +1,3 @@
-import Image from 'next/image';
-
 export default function FeatureHighlights() {
     return (
         <section className="py-12 md:py-stack-lg max-w-container-max mx-auto px-margin">
@@ -29,7 +27,7 @@ export default function FeatureHighlights() {
                 {/* Visa Checklist AI – spans 4 columns on desktop */}
                 <div className="md:col-span-4 bg-primary-container text-on-primary-container border border-primary/20 rounded-2xl p-6 md:p-stack-md shadow-lg">
                     <span className="material-symbols-outlined mb-4 select-invert text-4xl md:text-[40px]">fact_check</span>
-                    <h3 className="text-lg lg:text-h2-dashboard font-bold select-invert">Visa Checklist AI</h3>
+                    <h3 className="text-lg lg:text-h2-dashboard font-bold select-invert">Visa Checklist</h3>
                     <p className="text-sm lg:text-body-md mt-2 opacity-90 select-invert">
                         Real‑time tracking of your GTE (Genuine Temporary Entrant) requirements and document verification.
                     </p>
@@ -50,7 +48,7 @@ export default function FeatureHighlights() {
                         <span className="material-symbols-outlined text-tertiary mb-4 text-4xl md:text-[40px]">school</span>
                         <h3 className="text-lg lg:text-h2-dashboard font-bold">Course Finder</h3>
                         <p className="text-sm lg:text-body-md text-on-surface-variant mt-2">
-                            Filter over 10,000+ courses by CRICOS codes, intake dates, and tuition fee range.
+                            Filter courses by CRICOS codes, intake dates, and tuition fee range.
                         </p>
                     </div>
                     <div className="flex-1 space-y-2">

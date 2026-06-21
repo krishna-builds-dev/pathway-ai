@@ -1,10 +1,10 @@
-export default function AiWorks() {
+export default function Works() {
     return (
         <section className="py-12 lg:py-stack-lg">
             <div className="max-w-container-max mx-auto px-margin">
                 <div className="mb-12 lg:mb-16 text-center">
                     <h2 className="text-2xl lg:text-h2-dashboard font-bold text-on-background mb-4">
-                        Your AI Journey in 3 Steps
+                        Your Journey in 3 Steps
                     </h2>
                 </div>
                 <div className="relative grid grid-cols-1 md:grid-cols-3 gap-8 lg:gap-12">
@@ -52,7 +52,7 @@ export default function AiWorks() {
                             3. Generate &amp; Refine
                         </h4>
                         <p className="text-sm lg:text-body-md text-on-surface-variant">
-                            Get instant, professional drafts and polish them with AI suggestions.
+                            Get instant, professional drafts and refine them with smart suggestions.
                         </p>
                     </div>
                 </div>

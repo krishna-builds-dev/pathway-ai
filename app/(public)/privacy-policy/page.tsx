@@ -64,7 +64,7 @@ export default function PrivacyPolicy() {
                         Legal Center
                     </h1>
                     <p className="text-sm lg:text-body-lg text-on-surface-variant">
-                        Transparency is the foundation of trust. Learn how Pathway AI protects your journey and your data.
+                        Transparency is the foundation of trust. Learn how Pathway protects your journey and your data.
                     </p>
                 </div>
             </section>
@@ -128,12 +128,12 @@ export default function PrivacyPolicy() {
                         <h2 className="text-xl lg:text-2xl font-bold text-on-surface mb-4">Introduction</h2>
                         <p className="text-sm lg:text-base text-on-surface-variant mb-4">Last Updated: April {new Date().getFullYear()}</p>
                         <p className="text-sm lg:text-base text-on-surface-variant mb-4">
-                            Welcome to Pathway AI. We are committed to protecting your personal information and your right to
+                            Welcome to Pathway. We are committed to protecting your personal information and your right to
                             privacy. This Privacy Policy applies to all information collected through our website, mobile
                             application, and any related services, sales, marketing, or events.
                         </p>
                         <p className="text-sm lg:text-base text-on-surface-variant mb-4">
-                            When you use Pathway AI to navigate your educational journey to Australia or New Zealand, you
+                            When you use Pathway to navigate your educational journey to Australia or New Zealand, you
                             trust us with your personal data. We take this responsibility seriously and have designed our
                             systems to prioritize your security and data sovereignty.
                         </p>
@@ -155,22 +155,22 @@ export default function PrivacyPolicy() {
                         </ul>
                     </div>
 
-                    {/* AI Processing Disclosure */}
-                    <div className="my-8 lg:my-stack-lg p-4 lg:p-6 bg-surface-container-high rounded-xl border border-primary/20 relative overflow-hidden scroll-mt-28" id="ai-processing">
+                    {/* Data Processing Disclosure */}
+                    <div className="my-8 lg:my-stack-lg p-4 lg:p-6 bg-surface-container-high rounded-xl border border-primary/20 relative overflow-hidden scroll-mt-28" id="data-processing">
                         <div className="relative z-10">
                             <div className="flex items-center gap-2 text-primary mb-3">
-                                <span className="material-symbols-outlined">psychology</span>
-                                <span className="text-xs lg:text-label-caps">AI Transparency Disclosure</span>
+                                <span className="material-symbols-outlined">description</span>
+                                <span className="text-xs lg:text-label-caps">Data Processing Disclosure</span>
                             </div>
                             <h3 className="text-lg lg:text-h2-dashboard font-bold mb-3">
-                                How Pathway AI processes your data
+                                How Pathway processes your data
                             </h3>
                             <p className="text-xs lg:text-ui-sm text-on-surface-variant max-w-2xl">
-                                Our AI Hub uses machine learning models to analyze your academic profile against university entrance requirements. These models are designed to provide recommendations, not final admission decisions. Your data is processed in isolated environments and is never used to train global public models.
+                                Pathway uses rule-based tools to match your academic profile against university requirements and generate document templates. Your data stays in your account and is only processed to provide the features you use — SOP building, resume formatting, and visa checklist generation.
                             </p>
                         </div>
                         <div className="absolute -right-12 -bottom-12 opacity-5">
-                            <span className="material-symbols-outlined text-[120px] lg:text-[240px]">hub</span>
+                            <span className="material-symbols-outlined text-[120px] lg:text-[240px]">description</span>
                         </div>
                     </div>
 
@@ -208,26 +208,12 @@ export default function PrivacyPolicy() {
                         </p>
                         <p className="text-sm lg:text-base text-on-surface-variant mb-4">
                             We use AES-256 encryption for data at rest and TLS 1.3 for data in transit. Access to your
-                            personal information is strictly limited to authorized Pathway AI personnel and partners who
+                            personal information is strictly limited to authorized Pathway personnel and partners who
                             require access to perform their professional duties.
                         </p>
                     </div>
 
-                    {/* Image */}
-                    <div className="my-8 lg:my-stack-lg rounded-2xl overflow-hidden border border-outline-variant h-48 lg:h-64 relative group">
-                        <Image
-                            src="/images/privacy/fiber-cable.png"
-                            alt="A high-tech server room with glowing blue fiber optic cables representing secure data storage and advanced AI infrastructure."
-                            fill
-                            sizes="(max-width: 768px) 100vw, 50vw"
-                            className="object-cover grayscale group-hover:grayscale-0 transition-all duration-700"
-                        />
-                        <div className="absolute inset-0 bg-linear-to-t from-black/60 to-transparent flex items-end p-4 lg:p-8">
-                            <p className="text-white font-medium text-xs lg:text-ui-sm">
-                                Certified for ISO 27001 Data Security Standards
-                            </p>
-                        </div>
-                    </div>
+                   
 
                     {/* User Rights */}
                     <div id="user-rights" className="mt-8 scroll-mt-28">

@@ -6,7 +6,7 @@ import UserNavControls from "@/components/header/UserNavControls";
 import { createClient } from "@/lib/supabase/client";
 
 const segmentDisplayNames: Record<string, string> = {
-  ai: "AI Advisor",
+  advisor: "Advisor",
   sop: "SOP Builder",
   visa: "Visa Checklist",
   resume: "Resume Builder",

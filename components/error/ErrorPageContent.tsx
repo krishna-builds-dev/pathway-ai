@@ -10,7 +10,7 @@ interface ErrorPageContentProps {
 export default function ErrorPageContent({
     error,
     reset,
-    title = "Our AI is taking a quick break.",
+    title = "Something went wrong on our end.",
     description = "We've encountered an internal server error. Our team has been notified and is working to restore your academic path.",
 }: ErrorPageContentProps) {
     return (

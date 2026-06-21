@@ -8,7 +8,7 @@ const PROTECTED_ROUTES = [
     "/dashboard/sop",
     "/dashboard/resume",
     "/dashboard/visa",
-    "/dashboard/ai",
+    "/dashboard/advisor",
     "/dashboard/profile",
     "/account",
     "/dashboard/courses",

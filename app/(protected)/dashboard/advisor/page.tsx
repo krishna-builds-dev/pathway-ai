@@ -240,10 +240,10 @@ export default function AdvisorPage() {
 
   // ---- Main UI (wrapped in profile guard) ----
   return (
-     <RequireProfile
+    <RequireProfile
       profileComplete={profileComplete}
       missingFields={missingFields}
-      message="The AI advisor provides personalised guidance based on your profile details. Complete your profile to start."
+      message="The advisor provides personalised guidance based on your profile details. Complete your profile to start."
     >
       <main className="h-screen flex flex-col relative">
         {/* Header – responsive stacking */}
@@ -256,7 +256,7 @@ export default function AdvisorPage() {
             </div>
             <div className="flex flex-col">
               <span className="text-[10px] font-bold text-primary tracking-widest uppercase">
-                AI Advisor
+                Career Advisor
               </span>
               <h2 className="text-lg md:text-xl font-bold text-on-surface">Your Personal Visa Guide</h2>
               <p className="text-xs text-on-surface-variant font-medium hidden md:block">
@@ -299,7 +299,7 @@ export default function AdvisorPage() {
                   <div className="bg-primary/10 p-3 md:p-5 rounded-2xl md:rounded-3xl rounded-tl-none max-w-[85%] md:max-w-[80%] border border-primary/5">
                     <p className="text-sm leading-relaxed text-on-surface">
                       Hello{profile?.full_name ? ` ${profile.full_name.split(" ")[0]}` : ""}! I'm your
-                      dedicated visa advisor. I can help you with{" "}
+                      advisor. I can help you with{" "}
                       <b>visa tips</b>, check your <b>budget</b>, review your{" "}
                       <b>checklist</b>, give <b>SOP advice</b>, and much more. What would you like to explore
                       first?
@@ -315,22 +315,20 @@ export default function AdvisorPage() {
                   className={`flex gap-3 md:gap-4 fade-in ${msg.role === "user" ? "flex-row-reverse" : ""}`}
                 >
                   <div
-                    className={`w-8 h-8 md:w-10 md:h-10 rounded-xl flex items-center justify-center shrink-0 ${
-                      msg.role === "user"
+                    className={`w-8 h-8 md:w-10 md:h-10 rounded-xl flex items-center justify-center shrink-0 ${msg.role === "user"
                         ? "bg-primary shadow-lg shadow-primary/20"
                         : "bg-primary/10 border border-primary/5"
-                    }`}
+                      }`}
                   >
                     <span className={`material-symbols-outlined text-lg md:text-xl ${msg.role === "user" ? "text-white" : "text-primary"}`}>
                       {msg.role === "user" ? "person" : "smart_toy"}
                     </span>
                   </div>
                   <div
-                    className={`p-3 md:p-5 rounded-2xl md:rounded-3xl max-w-[85%] md:max-w-[80%] ${
-                      msg.role === "user"
+                    className={`p-3 md:p-5 rounded-2xl md:rounded-3xl max-w-[85%] md:max-w-[80%] ${msg.role === "user"
                         ? "bg-primary text-white rounded-tr-none shadow-xl shadow-primary/15"
                         : "bg-primary/10 rounded-tl-none border border-primary/5"
-                    }`}
+                      }`}
                   >
                     <p className="text-sm leading-relaxed whitespace-pre-line">{msg.content}</p>
                   </div>

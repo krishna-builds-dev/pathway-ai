@@ -279,42 +279,7 @@ Students collaborate closely with faculty mentors, engage in peer-led team initi
 
                 {/* Right Column Sidebar (4 columns) */}
                 <aside className="lg:col-span-4 sticky top-24 flex flex-col gap-6 mt-8 lg:mt-0">
-                    {/* AI Advisor Widget */}
-                    <div className="bg-secondary-container p-6 rounded-2xl text-on-secondary-container shadow-md flex flex-col gap-4">
-                        <div className="flex items-center gap-3">
-                            <div className="w-10 h-10 bg-white/20 rounded-full flex items-center justify-center shrink-0">
-                                <span className="material-symbols-outlined text-[20px]">smart_toy</span>
-                            </div>
-                            <div>
-                                <h4 className="font-black text-base select-invert">Pathway AI Advisor</h4>
-                                <div className="flex items-center gap-1.5">
-                                    <span className="w-2 h-2 bg-green-400 rounded-full"></span>
-                                    <p className="text-[11px] opacity-90 font-medium select-invert">Online now</p>
-                                </div>
-                            </div>
-                        </div>
-                        {user ? (
-                            <p className="text-sm leading-relaxed select-invert">
-                                Based on your profile, here's your compatibility with this course — and what we can help you prepare next.
-                            </p>
-                        ) : (
-                            <p className="text-sm leading-relaxed select-invert">
-                                Sign in to unlock your personalized AI compatibility with this course - and what we can help you prepare next.
-                            </p>
-                        )}
-                        <button
-                            onClick={() => {
-                                if (user) {
-                                    router.push('/dashboard/ai');
-                                } else {
-                                    setShowAuthModal(true);
-                                }
-                            }}
-                            className="bg-white text-secondary py-2.5 px-4 rounded-lg font-bold text-sm flex items-center justify-center gap-2 hover:bg-opacity-90 transition-all cursor-pointer w-full"
-                        >
-                            Talk to AI Advisor
-                        </button>
-                    </div>
+
 
                     {/* Migration/PR points Widget */}
                     {hasPR && (

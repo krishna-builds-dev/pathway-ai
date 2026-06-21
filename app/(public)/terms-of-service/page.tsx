@@ -65,7 +65,7 @@ export default function TermsOfService() {
                         Legal Center
                     </h1>
                     <p className="text-sm lg:text-body-lg text-on-surface-variant">
-                        Transparency is the foundation of trust. Learn how Pathway AI protects your journey and your data.
+                        Transparency is the foundation of trust. Learn how Pathway protects your journey and your data.
                     </p>
                 </div>
             </section>
@@ -128,7 +128,7 @@ export default function TermsOfService() {
                         <h2 className="text-xl lg:text-2xl font-bold text-on-surface mb-4">Acceptance of Terms</h2>
                         <p className="text-sm lg:text-base text-on-surface-variant mb-4">Last Updated: April {new Date().getFullYear()}</p>
                         <p className="text-sm lg:text-base text-on-surface-variant mb-4">
-                            By accessing or using the Pathway AI platform, you agree to be bound by these Terms of
+                            By accessing or using the Pathway platform, you agree to be bound by these Terms of
                             Service. If you do not agree to these terms, please do not use our services.
                         </p>
                     </div>
@@ -136,8 +136,8 @@ export default function TermsOfService() {
                     <div id="description" className="mt-8 scroll-mt-28">
                         <h2 className="text-xl lg:text-2xl font-bold text-on-surface mb-4">Description of Service</h2>
                         <p className="text-sm lg:text-base text-on-surface-variant mb-4">
-                            Pathway AI provides educational guidance and data-driven insights for students seeking to
-                            study in Australia and New Zealand. Important: Pathway AI is an educational guidance
+                            Pathway provides educational guidance and data-driven insights for students seeking to
+                            study in Australia and New Zealand. Important: Pathway is an educational guidance
                             platform and not a registered migration or visa agency. We provide information to support
                             your journey, but we do not provide legal visa advice or guarantee visa outcomes.
                         </p>
@@ -155,16 +155,14 @@ export default function TermsOfService() {
                     <div id="intellectual-property" className="mt-8 scroll-mt-28">
                         <h2 className="text-xl lg:text-2xl font-bold text-on-surface mb-4">Intellectual Property</h2>
                         <p className="text-sm lg:text-base text-on-surface-variant mb-4">
-                            The content, features, and functionality of the Pathway AI platform, including but not
-                            limited to the AI Hub algorithms and design elements, are the exclusive property of Pathway
-                            AI and are protected by international copyright and trademark laws.
+                            The content, features, and functionality of the Pathway platform, including its design, code, and original content, are the exclusive property of Pathway and are protected by international copyright and trademark laws.
                         </p>
                     </div>
 
                     <div id="liability" className="mt-8 scroll-mt-28">
                         <h2 className="text-xl lg:text-2xl font-bold text-on-surface mb-4">Limitation of Liability</h2>
                         <p className="text-sm lg:text-base text-on-surface-variant mb-4">
-                            Pathway AI shall not be liable for any indirect, incidental, special, consequential, or
+                            Pathway shall not be liable for any indirect, incidental, special, consequential, or
                             punitive damages resulting from your use of or inability to use the service. All
                             recommendations are provided for informational purposes only.
                         </p>
@@ -174,7 +172,7 @@ export default function TermsOfService() {
                         <h2 className="text-xl lg:text-2xl font-bold text-on-surface mb-4">Governing Law</h2>
                         <p className="text-sm lg:text-base text-on-surface-variant mb-4">
                             These terms shall be governed by and defined following the laws of the jurisdiction in which
-                            Pathway AI is registered. Both parties consent that the courts of said jurisdiction shall
+                            Pathway is registered. Both parties consent that the courts of said jurisdiction shall
                             have exclusive jurisdiction to settle any dispute which may arise in connection with these
                             terms.
                         </p>

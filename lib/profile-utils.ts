@@ -34,10 +34,6 @@ export function isProfileComplete(profile: Record<string, any> | null): { comple
     if (arr('skills').length === 0) missingFields.push('skills');
     if (arr('certificates').length === 0) missingFields.push('certificates');
 
-    if (missingFields.length > 0) {
-        console.log('Profile is missing the following fields:', missingFields);
-    }
-
     return {
         complete: missingFields.length === 0,
         missingFields,

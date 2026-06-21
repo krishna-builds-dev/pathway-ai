@@ -9,7 +9,7 @@ const navItems = [
   { name: "SOP Builder", href: "/dashboard/sop", icon: "edit_note" },
   { name: "Resume Builder", href: "/dashboard/resume", icon: "badge" },
   { name: "Visa Checklist", href: "/dashboard/visa", icon: "fact_check" },
-  { name: "AI Advisor", href: "/dashboard/ai", icon: "psychology" },
+  { name: "Advisor", href: "/dashboard/advisor", icon: "psychology" },
 ];
 
 const additionalLinks = [
@@ -40,17 +40,19 @@ export default function DashboardSidebar({ onClose }: { onClose?: () => void }) 
       )}
 
       {/* Logo */}
-      <div className="mb-8 px-2 flex items-center gap-3">
-        <PathwayLogo className="w-10 h-10" />
-        <div>
-          <h1 className="font-geist text-[18px] font-bold text-[#1e00a9] leading-tight">
-            Pathway AI
-          </h1>
-          <p className="text-[11px] text-on-surface-variant opacity-70">
-            Academic Excellence
-          </p>
+      <Link href="/dashboard">
+        <div className="mb-8 px-2 flex items-center gap-3">
+          <PathwayLogo className="w-10 h-10" />
+          <div>
+            <h1 className="font-geist text-[18px] font-bold text-[#1e00a9] leading-tight">
+              Pathway
+            </h1>
+            <p className="text-[11px] text-on-surface-variant opacity-70">
+              Academic Excellence
+            </p>
+          </div>
         </div>
-      </div>
+      </Link>
 
       {/* Navigation */}
       <nav className="flex-1 space-y-0.5">
@@ -63,11 +65,10 @@ export default function DashboardSidebar({ onClose }: { onClose?: () => void }) 
             <Link
               key={item.name}
               href={item.href}
-              className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-150 text-sm font-medium ${
-                active
-                  ? "bg-primary-fixed text-[#1e00a9] font-bold"
-                  : "text-on-surface-variant hover:bg-[#f0ecf9] hover:text-[#1e00a9]"
-              }`}
+              className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-150 text-sm font-medium ${active
+                ? "bg-primary-fixed text-[#1e00a9] font-bold"
+                : "text-on-surface-variant hover:bg-[#f0ecf9] hover:text-[#1e00a9]"
+                }`}
             >
               <span
                 className="material-symbols-outlined text-[20px]"
@@ -88,11 +89,10 @@ export default function DashboardSidebar({ onClose }: { onClose?: () => void }) 
             <Link
               key={item.name}
               href={item.href}
-              className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-150 text-sm font-medium ${
-                active
-                  ? "bg-primary-fixed text-[#1e00a9] font-bold"
-                  : "text-on-surface-variant hover:bg-[#f0ecf9] hover:text-[#1e00a9]"
-              }`}
+              className={`flex items-center gap-3 px-3 py-2.5 rounded-xl transition-all duration-150 text-sm font-medium ${active
+                ? "bg-primary-fixed text-[#1e00a9] font-bold"
+                : "text-on-surface-variant hover:bg-[#f0ecf9] hover:text-[#1e00a9]"
+                }`}
             >
               <span
                 className="material-symbols-outlined text-[20px]"

@@ -29,7 +29,7 @@ export default function SolutionSection() {
                                 <span className="material-symbols-outlined text-sm select-invert">check</span>
                             </div>
                             <div>
-                                <h4 className="text-base lg:text-lg font-bold">Unbiased AI Guidance</h4>
+                                <h4 className="text-base lg:text-lg font-bold">Unbiased Smart Guidance</h4>
                                 <p className="text-sm lg:text-body-md text-on-surface-variant">
                                     Algorithms that rank institutions based on your grades, budget, and career goals—not hidden fees.
                                 </p>

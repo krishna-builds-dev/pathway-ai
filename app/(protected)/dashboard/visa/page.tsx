@@ -196,7 +196,7 @@ export default function VisaPage() {
                             </p>
                         </div>
                         <div className="bg-surface-container-high p-3 md:p-4 rounded-xl border border-outline-variant/30">
-                            <p className="text-xs md:text-label-md text-on-surface-variant mb-1">AI Trust Score</p>
+                            <p className="text-xs md:text-label-md text-on-surface-variant mb-1">Completion Score</p>
                             <p className="text-xl md:text-headline-md font-bold text-primary">{trustScore}</p>
                         </div>
                     </div>

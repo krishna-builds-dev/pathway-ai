@@ -1,5 +1,5 @@
 // types/index.ts
-// Shared TypeScript types across the Pathway AI application
+// Shared TypeScript types across the Pathway application
 
 export type BadgeType = 'primary' | 'secondary' | 'warning' | 'danger' | 'success';
 
@@ -67,7 +67,7 @@ export interface Course {
   intake_months: number[];
   pr_pathway: boolean;
   is_high_demand: boolean;
-  
+
   // AI-Enriched fields
   description?: string;
   requirements?: string[];

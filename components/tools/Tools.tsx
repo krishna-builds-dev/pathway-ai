@@ -6,7 +6,7 @@ import AuthModal from '@/components/auth/AuthModal';
 import { useAuth } from '@/components/providers/AuthProvider';
 import Link from 'next/link';
 
-export default function AiTools() {
+export default function Tools() {
   const { user } = useAuth();
   const [showAuthModal, setShowAuthModal] = useState(false);
 
@@ -18,7 +18,7 @@ export default function AiTools() {
             Powerful Tools for Your Journey
           </h2>
           <p className="text-sm lg:text-body-md text-on-surface-variant">
-            Precision-engineered AI tools designed specifically for international education.
+            Precision-engineered tools designed specifically for international education.
           </p>
         </div>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-gutter">
@@ -31,7 +31,7 @@ export default function AiTools() {
               SOP Builder
             </h3>
             <p className="text-sm lg:text-body-md text-on-surface-variant mb-8 flex-grow">
-              Craft compelling Statements of Purpose tailored to your target universities. Highlight your strengths with AI-optimized narratives.
+              Craft compelling Statements of Purpose tailored to your target universities. Highlight your strengths with smart, structured narratives.
             </p>
             {user ? (
               <Link

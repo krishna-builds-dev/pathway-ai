@@ -60,8 +60,8 @@ export default function Header() {
     }, [pathname]);
 
     const navItems = [
-        { name: "About us", href: "/about" },
-        { name: "Ai studio", href: "/ai" },
+        { name: "About", href: "/about" },
+        { name: "Tools", href: "/tools" },
         { name: "Contact", href: "/contact" },
     ];
 
@@ -88,7 +88,7 @@ export default function Header() {
                             <PathwayLogo className="w-8 h-8" />
                         </div>
                         <div className="font-geist text-2xl md:text-h2-dashboard font-bold text-primary">
-                            Pathway AI
+                            Pathway
                         </div>
                     </Link>
 
