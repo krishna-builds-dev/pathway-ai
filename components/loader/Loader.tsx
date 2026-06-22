@@ -68,7 +68,7 @@ export default function Loader({ fullScreen = false }: LoaderProps) {
 
     if (fullScreen) {
         return (
-            <div className="fixed inset-0 z-[100] flex items-center justify-center bg-surface/90 backdrop-blur-md">
+            <div className="fixed inset-0 z-100 flex items-center justify-center bg-surface/90 backdrop-blur-md">
                 {content}
             </div>
         );

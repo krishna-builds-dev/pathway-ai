@@ -470,7 +470,7 @@ export default function ProfilePage() {
                                                 value={formData.professional_summary || ""}
                                                 onChange={handleInputChange}
                                                 rows={4}
-                                                className="w-full max-w-md md:max-w-lg lg:max-w-none  px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-outline-variant focus:ring-2 focus:ring-primary focus:border-transparent bg-white/50 text-sm md:text-body-sm outline-none transition-all resize-none"
+                                                className="w-full px-3 md:px-4 py-2.5 md:py-3 rounded-xl border border-outline-variant focus:ring-2 focus:ring-primary focus:border-transparent bg-white/50 text-sm md:text-body-sm outline-none transition-all resize-none"
                                                 placeholder="Brief overview of your skills, goals, and what you bring to the table."
                                             />
                                         </div>

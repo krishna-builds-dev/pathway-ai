@@ -281,7 +281,7 @@ export default function VisaPage() {
   <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 backdrop-blur-sm p-4 sm:p-6">
     <div className="bg-surface-container-lowest border border-outline-variant/30 rounded-3xl shadow-2xl w-full max-w-4xl max-h-[90vh] overflow-hidden animate-in fade-in zoom-in-95">
       {/* Modal header */}
-      <div className="px-5 py-5 md:px-8 md:py-6 bg-gradient-to-r from-primary/5 to-secondary/5 border-b border-outline-variant/20">
+      <div className="px-5 py-5 md:px-8 md:py-6 bg-linear-to-r from-primary/5 to-secondary/5 border-b border-outline-variant/20">
         <div className="flex items-center justify-between">
           <div>
             <h3 className="text-lg md:text-headline-sm font-bold text-on-surface">
@@ -349,7 +349,7 @@ export default function VisaPage() {
                                 <span className="material-symbols-outlined text-primary text-lg md:text-[20px]">
                                   {getItemIcon(section.items[0].id)}
                                 </span>
-                                <span className="text-xs md:text-body-sm font-semibold text-on-surface break-words">
+                                <span className="text-xs md:text-body-sm font-semibold text-on-surface wrap-break-word">
                                   {section.title}
                                 </span>
                               </div>
@@ -358,10 +358,10 @@ export default function VisaPage() {
                             )}
                           </td>
                           <td className="py-3 md:py-4 pr-2 md:pr-4">
-                            <p className="text-xs md:text-body-sm font-semibold text-on-surface break-words">
+                            <p className="text-xs md:text-body-sm font-semibold text-on-surface wrap-break-word">
                               {item.label}
                             </p>
-                            <p className="text-[10px] md:text-body-xs text-on-surface-variant break-words">
+                            <p className="text-[10px] md:text-body-xs text-on-surface-variant wrap-break-word">
                               {item.desc}
                             </p>
                           </td>

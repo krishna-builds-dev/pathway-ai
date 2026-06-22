@@ -185,7 +185,7 @@ export default function CoursesHeader({
 </div>
             {/* Autocomplete Suggestions Dropdown */}
             {showSuggestions && tempQuery.trim().length > 0 && (
-                <div className="absolute top-full left-0 right-0 mt-2 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-2xl z-[100] max-h-72 sm:max-h-80 overflow-y-auto backdrop-blur-md max-w-[100vw] sm:max-w-none">
+                <div className="absolute top-full left-0 right-0 mt-2 bg-surface-container-lowest border border-outline-variant rounded-xl shadow-2xl z-100 max-h-72 sm:max-h-80 overflow-y-auto backdrop-blur-md max-w-[100vw] sm:max-w-none">
                     {/* Loading state */}
                     {loadingSuggestions && (
                         <div className="flex items-center gap-3 px-4 py-3 text-on-surface-variant">

@@ -5,8 +5,11 @@ import { getVisaChecklist } from "@/app/(protected)/dashboard/visa/actions";
 import { useProfileCompleteness } from "@/hooks/useProfileCompleteness";
 import RequireProfile from "@/components/providers/RequireProfile";
 import { toast } from "react-toastify";
-
-
+import {
+  getAdvisorResponse,
+  getFreeTextAdvisorResponse,
+  getAIChatUnlocked,
+} from "@/lib/advisor-engine";
 
 /* ---------- Expanded Rule Engine ---------- */
 const generateResponse = (
@@ -109,35 +112,6 @@ const generateResponse = (
         `• **Purpose‑built student accommodation (PBSA):** Modern facilities with other students.\n\n` +
         `Research the areas near your university and factor in transportation costs. Many students find temporary accommodation for the first few weeks and then search on the ground.`;
 
-    case "health_insurance":
-      return `🩺 **Health Insurance (OSHC & Overseas Coverage)**\n\n` +
-        `Most countries require international students to have health insurance. For Australia, you need OSHC (Overseas Student Health Cover); for other destinations, similar policies exist.\n\n` +
-        `📌 **What to look for:**\n` +
-        `• Coverage for doctor visits, hospital stays, and emergency ambulance.\n` +
-        `• Some policies include extras like dental or optical – evaluate if you need them.\n` +
-        `• Make sure the insurance is valid for the entire duration of your visa.\n` +
-        `• Keep a digital copy of your policy card and know how to make a claim.\n\n` +
-        `You can compare OSHC providers online. Your university may also recommend a preferred insurer.`;
-
-    case "part_time_work":
-      return `💼 **Part‑Time Work While Studying**\n\n` +
-        `Most student visas allow you to work up to 20 hours per week during term and full‑time during breaks. This can help offset living costs and build local experience.\n\n` +
-        `📌 **How to find work:**\n` +
-        `• Check your university's career portal or student job board.\n` +
-        `• Look for on‑campus roles in libraries, cafes, or administration.\n` +
-        `• Use local job websites and networking events.\n` +
-        `• Make sure your visa conditions explicitly allow work before you start.\n\n` +
-        `Balancing work and study can be challenging – prioritize your coursework and use work as a supplement, not a necessity.`;
-
-    case "english_tips":
-      return `🗣️ **English Proficiency & Test Tips**\n\n` +
-        `If you still need to take IELTS, TOEFL, or PTE, here are a few strategies:\n\n` +
-        `• **Familiarise yourself with the test format** – practice tests are your best friend.\n` +
-        `• **Focus on your weakest section** – whether it's writing, speaking, or listening.\n` +
-        `• **Immerse yourself in English:** watch movies, read articles, and try to think in English.\n` +
-        `• **Take a preparation course** if you can – many are available online.\n\n` +
-        `Most universities have minimum score requirements. Aim to exceed them slightly to be safe. Good luck!`;
-
     case "motivation":
       const quotes = [
         "✨ Every document you complete brings you one step closer to your dream campus.",
@@ -156,14 +130,11 @@ const generateResponse = (
 /* ---------- Chip Definitions ---------- */
 const chips = [
   { id: "visa_tips", label: "✈️ Visa Tips" },
-  { id: "budget_check", label: "💰 Budget Check" },
+  { id: "budget_check", label: "💰 Budget" },
   { id: "checklist", label: "📋 My Checklist" },
   { id: "sop_advice", label: "📝 SOP Advice" },
   { id: "scholarship", label: "🎓 Scholarships" },
   { id: "accommodation", label: "🏠 Accommodation" },
-  { id: "health_insurance", label: "🩺 Health Insurance" },
-  { id: "part_time_work", label: "💼 Part-time Work" },
-  { id: "english_tips", label: "🗣️ English Tests" },
   { id: "motivation", label: "🌟 Motivation" },
 ];
 
@@ -172,13 +143,21 @@ export default function AdvisorPage() {
   const [messages, setMessages] = useState<{ role: "user" | "advisor"; content: string }[]>([]);
   const [checklistStats, setChecklistStats] = useState({ done: 0, total: 0, progress: 0 });
   const [checklistLoading, setChecklistLoading] = useState(true);
+  const [chatInput, setChatInput] = useState("");
+  const [isProcessing, setIsProcessing] = useState(false);
+  const [aiChatUnlocked, setAiChatUnlocked] = useState(false);
 
-  // DRY profile completeness hook
   const { profile, profileComplete, missingFields, loading: profileLoading } = useProfileCompleteness();
-
   const chatEndRef = useRef<HTMLDivElement>(null);
 
-  // ---- Load checklist (only) ----
+  // ---- Check if AI chat is unlocked (dev + Gemini key only) ----
+  useEffect(() => {
+    getAIChatUnlocked()
+      .then(setAiChatUnlocked)
+      .catch(() => setAiChatUnlocked(false));
+  }, []);
+
+  // ---- Load checklist ----
   useEffect(() => {
     (async () => {
       try {
@@ -199,7 +178,6 @@ export default function AdvisorPage() {
       } catch (error) {
         console.error("Failed to load checklist:", error);
         toast.error("Could not load your visa checklist. Some advice may be less accurate.");
-
       } finally {
         setChecklistLoading(false);
       }
@@ -209,24 +187,59 @@ export default function AdvisorPage() {
   // ---- Auto-scroll to latest message ----
   useEffect(() => {
     chatEndRef.current?.scrollIntoView({ behavior: "smooth" });
-  }, [messages]);
+  }, [messages, isProcessing]);
 
   // ---- Handle chip click ----
   const handleChipClick = async (chipId: string) => {
     const chipLabel = chips.find((c) => c.id === chipId)?.label || chipId;
     setMessages((prev) => [...prev, { role: "user", content: chipLabel }]);
 
-    // Simulate typing delay
-    await new Promise((resolve) => setTimeout(resolve, 1200));
+    setIsProcessing(true);
 
-    const advisorText = generateResponse(
+    const ruleBasedText = generateResponse(
       chipId,
       profile,
       checklistStats.progress,
       checklistStats.done,
       checklistStats.total
     );
-    setMessages((prev) => [...prev, { role: "advisor", content: advisorText }]);
+
+    try {
+      const advisorText = await getAdvisorResponse(
+        {
+          chip: chipId,
+          profile,
+          checklistProgress: checklistStats.progress,
+          doneItems: checklistStats.done,
+          totalItems: checklistStats.total,
+        },
+        ruleBasedText
+      );
+      setMessages((prev) => [...prev, { role: "advisor", content: advisorText }]);
+    } finally {
+      setIsProcessing(false);
+    }
+  };
+
+  // ---- Handle free-text send (dev only) ----
+  const handleSendMessage = async () => {
+    if (!chatInput.trim() || isProcessing) return;
+
+    const userText = chatInput.trim();
+    setMessages((prev) => [...prev, { role: "user", content: userText }]);
+    setChatInput("");
+    setIsProcessing(true);
+
+    try {
+      const advisorText = await getFreeTextAdvisorResponse(
+        profile,
+        userText,
+        messages
+      );
+      setMessages((prev) => [...prev, { role: "advisor", content: advisorText }]);
+    } finally {
+      setIsProcessing(false);
+    }
   };
 
   // ---- Loading (profile + checklist) ----
@@ -238,65 +251,58 @@ export default function AdvisorPage() {
     );
   }
 
-  // ---- Main UI (wrapped in profile guard) ----
+  // ---- Main UI ----
   return (
     <RequireProfile
       profileComplete={profileComplete}
       missingFields={missingFields}
       message="The advisor provides personalised guidance based on your profile details. Complete your profile to start."
     >
-      <main className="h-screen flex flex-col relative">
-        {/* Header – responsive stacking */}
-        <header className="min-h-[80px] md:h-24 flex flex-col md:flex-row items-start md:items-center justify-between px-4 md:px-8 py-3 md:py-0 bg-white/20 backdrop-blur-md border-b border-white/30 gap-3 md:gap-0">
-          <div className="flex items-center gap-4">
-            <div className="w-10 h-10 md:w-12 md:h-12 rounded-2xl bg-primary/10 flex items-center justify-center text-primary shadow-sm border border-primary/5 shrink-0">
-              <span className="material-symbols-outlined text-2xl md:text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>
+      <div className="h-[calc(100vh-90px)] md:h-[calc(100vh-130px)] flex flex-col relative">
+        {/* Header */}
+        <header className="h-16 md:h-24 shrink-0 flex flex-row items-center justify-between px-3 md:px-8 bg-white/20 backdrop-blur-md border-b border-white/30">
+          <div className="flex items-center gap-3 md:gap-4">
+            <div className="w-8 h-8 md:w-12 md:h-12 rounded-xl md:rounded-2xl bg-primary/10 flex items-center justify-center text-primary shadow-sm border border-primary/5 shrink-0">
+              <span className="material-symbols-outlined text-xl md:text-3xl" style={{ fontVariationSettings: "'FILL' 1" }}>
                 verified_user
               </span>
             </div>
             <div className="flex flex-col">
-              <span className="text-[10px] font-bold text-primary tracking-widest uppercase">
+              <span className="text-[9px] md:text-[10px] font-bold text-primary tracking-widest uppercase">
                 Career Advisor
               </span>
-              <h2 className="text-lg md:text-xl font-bold text-on-surface">Your Personal Visa Guide</h2>
-              <p className="text-xs text-on-surface-variant font-medium hidden md:block">
-                Tap a question below – I’ll give you instant, personalised advice.
+              <h2 className="text-base md:text-xl font-bold text-on-surface leading-tight">Your Visa Guide</h2>
+              <p className="text-xs text-on-surface-variant font-medium hidden md:block mt-0.5">
+                Tap a question below – I'll give you instant, personalised advice.
               </p>
             </div>
           </div>
-          <div className="flex items-center gap-4 w-full md:w-auto justify-between md:justify-end">
-            {/* Mobile subtitle */}
-            <p className="text-xs hidden text-on-surface-variant font-medium md:hidden">
-              Tap a question below – I’ll give you instant advice.
-            </p>
-            <div className="flex items-center gap-3">
-              <div className="text-right hidden sm:block">
-                <p className="text-sm font-bold text-on-surface">
-                  {profile?.full_name || "Student"}
-                </p>
-                <p className="text-[10px] text-on-surface-variant uppercase tracking-tighter">
-                  {profile?.target_destination || "Your Track"}
-                </p>
-              </div>
-              <div className="w-10 hidden md:flex h-10 md:w-12 md:h-12 rounded-full border-2 border-white shadow-md bg-primary/5  items-center justify-center overflow-hidden">
-                <span className="material-symbols-outlined text-primary text-2xl md:text-3xl">smart_toy</span>
-              </div>
+          <div className="flex items-center gap-3">
+            <div className="text-right hidden sm:block">
+              <p className="text-sm font-bold text-on-surface">
+                {profile?.full_name || "Student"}
+              </p>
+              <p className="text-[10px] text-on-surface-variant uppercase tracking-tighter">
+                {profile?.target_destination || "Your Track"}
+              </p>
+            </div>
+            <div className="w-8 h-8 md:w-12 md:h-12 rounded-full border-2 border-white shadow-md bg-primary/5 hidden md:flex items-center justify-center overflow-hidden shrink-0">
+              <span className="material-symbols-outlined text-primary text-xl md:text-3xl">smart_toy</span>
             </div>
           </div>
         </header>
 
-        {/* Chat area – responsive padding */}
-        <section className="grow flex flex-col p-3 md:p-6 overflow-hidden max-w-6xl mx-auto w-full relative">
-          <div className="glass-container grow rounded-[24px] md:rounded-4xl overflow-hidden flex flex-col relative shadow-2xl shadow-primary/5 border border-white/40">
+        {/* Chat area */}
+        <section className="grow flex flex-col p-2 py-0 md:px-6 md:py-0 overflow-hidden max-w-6xl mx-auto w-full relative">
+          <div className="glass-container grow rounded-[20px] md:rounded-4xl overflow-hidden flex flex-col relative shadow-2xl shadow-primary/5 border border-white/40">
             {/* Messages */}
-            <div className="grow overflow-y-auto custom-scrollbar p-4 md:p-8 space-y-4 md:space-y-6 pb-40 md:pb-48">
-              {/* Initial greeting */}
-              {messages.length === 0 && (
+            <div className="grow overflow-y-auto custom-scrollbar p-3 md:px-8 md:py-0 space-y-4 md:space-y-6 pb-32 md:pb-48">
+              {messages.length === 0 && !isProcessing && (
                 <div className="flex gap-3 md:gap-4 fade-in">
                   <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-primary/10 border border-primary/5 flex items-center justify-center shrink-0 shadow-sm">
                     <span className="material-symbols-outlined text-primary text-lg md:text-xl">smart_toy</span>
                   </div>
-                  <div className="bg-primary/10 p-3 md:p-5 rounded-2xl md:rounded-3xl rounded-tl-none max-w-[85%] md:max-w-[80%] border border-primary/5">
+                  <div className="bg-primary/10 p-3 md:p-5 rounded-2xl md:rounded-3xl rounded-tl-none max-w-[85%] md:max-w-2xl border border-primary/5">
                     <p className="text-sm leading-relaxed text-on-surface">
                       Hello{profile?.full_name ? ` ${profile.full_name.split(" ")[0]}` : ""}! I'm your
                       advisor. I can help you with{" "}
@@ -308,7 +314,6 @@ export default function AdvisorPage() {
                 </div>
               )}
 
-              {/* Message bubbles */}
               {messages.map((msg, i) => (
                 <div
                   key={i}
@@ -320,55 +325,97 @@ export default function AdvisorPage() {
                         : "bg-primary/10 border border-primary/5"
                       }`}
                   >
-                    <span className={`material-symbols-outlined text-lg md:text-xl ${msg.role === "user" ? "text-white" : "text-primary"}`}>
+                    <span className={`material-symbols-outlined text-lg md:text-xl select-invert ${msg.role === "user" ? "text-white" : "text-primary"
+                      }`}>
                       {msg.role === "user" ? "person" : "smart_toy"}
                     </span>
                   </div>
                   <div
-                    className={`p-3 md:p-5 rounded-2xl md:rounded-3xl max-w-[85%] md:max-w-[80%] ${msg.role === "user"
+                    className={`p-3 md:p-5 rounded-2xl md:rounded-3xl max-w-[85%] md:max-w-2xl ${msg.role === "user"
                         ? "bg-primary text-white rounded-tr-none shadow-xl shadow-primary/15"
                         : "bg-primary/10 rounded-tl-none border border-primary/5"
                       }`}
                   >
-                    <p className="text-sm leading-relaxed whitespace-pre-line">{msg.content}</p>
+                    <p className="text-sm leading-relaxed select-invert whitespace-pre-line">{msg.content}</p>
                   </div>
                 </div>
               ))}
+
+              {/* Thinking indicator */}
+              {isProcessing && (
+                <div className="flex gap-3 md:gap-4 fade-in">
+                  <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-primary/10 border border-primary/5 flex items-center justify-center shrink-0 shadow-sm">
+                    <span className="material-symbols-outlined text-primary text-lg md:text-xl">smart_toy</span>
+                  </div>
+                  <div className="bg-primary/10 p-4 md:p-5 rounded-2xl md:rounded-3xl rounded-tl-none max-w-[85%] md:max-w-2xl border border-primary/5 flex items-center gap-2">
+                    <span className="animate-pulse text-sm text-on-surface-variant">Thinking…</span>
+                    <div className="flex gap-1">
+                      <span className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" style={{ animationDelay: '0s' }}></span>
+                      <span className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" style={{ animationDelay: '0.15s' }}></span>
+                      <span className="w-2 h-2 bg-primary/60 rounded-full animate-bounce" style={{ animationDelay: '0.3s' }}></span>
+                    </div>
+                  </div>
+                </div>
+              )}
+
               <div ref={chatEndRef} />
             </div>
 
-            {/* Bottom area (chips + decorative input) */}
-            <div className="absolute bottom-0 left-0 right-0 p-3 md:p-6 bg-linear-to-t from-white/95 via-white/80 to-transparent">
-              {/* Chips – horizontally scrollable */}
-              <div className="flex gap-2 md:gap-3 overflow-x-auto pb-4 md:pb-6">
+            {/* Bottom area */}
+            <div className="absolute bottom-0 left-0 right-0 p-2 md:p-6 bg-linear-to-t from-white/95 via-white/80 to-transparent">
+              <div className="flex gap-2 md:gap-3 overflow-x-auto pb-3 md:pb-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
                 {chips.map((chip) => (
                   <button
                     key={chip.id}
                     onClick={() => handleChipClick(chip.id)}
-                    className="whitespace-nowrap px-4 py-2 md:px-5 md:py-2.5 bg-white border border-outline-variant/40 rounded-full text-xs md:text-[13px] font-semibold text-on-surface hover:border-primary hover:text-primary transition-all shadow-sm cursor-pointer active:scale-95"
+                    disabled={isProcessing}
+                    className="whitespace-nowrap px-4 py-2 md:px-5 md:py-2.5 bg-white border border-outline-variant/40 rounded-full text-xs md:text-[13px] font-semibold text-on-surface hover:border-primary hover:text-primary transition-all shadow-sm cursor-pointer active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
                   >
                     {chip.label}
                   </button>
                 ))}
               </div>
 
-              {/* Decorative input bar */}
-              <div className="relative glass-card rounded-[1rem] md:rounded-[1.25rem] shadow-xl p-3 md:p-4 flex items-center bg-white/90 border border-white cursor-default" aria-disabled="true">
-                <span className="material-symbols-outlined text-primary/40 mr-2 md:mr-3 text-lg md:text-xl">
-                  chat_bubble_outline
-                </span>
-                <p className="text-xs md:text-sm text-on-surface-variant/50 font-medium truncate">
-                  Choose a question above – I’ll handle the rest.
-                </p>
-                <div className="ml-auto flex gap-1">
-                  <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-primary/20" />
-                  <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-primary/20" />
+              {aiChatUnlocked ? (
+                <div className="relative glass-card rounded-2xl md:rounded-[1.25rem] shadow-xl py-2 px-4 md:p-4 flex items-center gap-2 bg-white/90 border border-white">
+                  <span className="material-symbols-outlined text-primary text-lg md:text-xl shrink-0">
+                    chat_bubble_outline
+                  </span>
+                  <input
+                    type="text"
+                    value={chatInput}
+                    onChange={(e) => setChatInput(e.target.value)}
+                    onKeyDown={(e) => e.key === "Enter" && handleSendMessage()}
+                    placeholder="Ask me anything..."
+                    disabled={isProcessing}
+                    className="flex-1 w-full bg-transparent outline-none text-sm text-on-surface placeholder:text-on-surface-variant/50"
+                  />
+                  <button
+                    onClick={handleSendMessage}
+                    disabled={isProcessing || !chatInput.trim()}
+                    className="text-primary disabled:opacity-30 shrink-0 p-1 flex items-center justify-center"
+                  >
+                    <span className="material-symbols-outlined">send</span>
+                  </button>
                 </div>
-              </div>
+              ) : (
+                <div className="relative glass-card rounded-2xl md:rounded-[1.25rem] shadow-xl py-2.5 px-4 md:p-4 flex items-center gap-2 bg-white/90 border border-white cursor-default" aria-disabled="true">
+                  <span className="material-symbols-outlined text-primary/40 text-lg md:text-xl shrink-0">
+                    chat_bubble_outline
+                  </span>
+                  <p className="text-xs md:text-sm text-on-surface-variant/50 font-medium truncate">
+                    Choose a question above – I'll handle the rest.
+                  </p>
+                  <div className="ml-auto flex gap-1">
+                    <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-primary/20" />
+                    <div className="w-1 h-1 md:w-1.5 md:h-1.5 rounded-full bg-primary/20" />
+                  </div>
+                </div>
+              )}
             </div>
           </div>
         </section>
-      </main>
+      </div>
     </RequireProfile>
   );
 }
