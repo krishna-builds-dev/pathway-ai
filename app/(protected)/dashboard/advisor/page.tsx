@@ -298,7 +298,7 @@ export default function AdvisorPage() {
             {/* Messages */}
             <div className="grow overflow-y-auto custom-scrollbar p-3 md:px-8 md:py-0 space-y-4 md:space-y-6 pb-32 md:pb-48">
               {messages.length === 0 && !isProcessing && (
-                <div className="flex gap-3 md:gap-4 fade-in pt-[35px]">
+                <div className="flex gap-3 md:gap-4 fade-in md:pt-[30px]">
                   <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-primary/10 border border-primary/5 flex items-center justify-center shrink-0 shadow-sm">
                     <span className="material-symbols-outlined text-primary text-lg md:text-xl">smart_toy</span>
                   </div>
@@ -321,8 +321,8 @@ export default function AdvisorPage() {
                 >
                   <div
                     className={`w-8 h-8 md:w-10 md:h-10 rounded-xl flex items-center justify-center shrink-0 ${msg.role === "user"
-                        ? "bg-primary shadow-lg shadow-primary/20"
-                        : "bg-primary/10 border border-primary/5"
+                      ? "bg-primary shadow-lg shadow-primary/20"
+                      : "bg-primary/10 border border-primary/5"
                       }`}
                   >
                     <span className={`material-symbols-outlined text-lg md:text-xl select-invert ${msg.role === "user" ? "text-white" : "text-primary"
@@ -332,8 +332,8 @@ export default function AdvisorPage() {
                   </div>
                   <div
                     className={`p-3 md:p-5 rounded-2xl md:rounded-3xl max-w-[85%] md:max-w-2xl ${msg.role === "user"
-                        ? "bg-primary text-white rounded-tr-none shadow-xl shadow-primary/15"
-                        : "bg-primary/10 rounded-tl-none border border-primary/5"
+                      ? "bg-primary text-white rounded-tr-none shadow-xl shadow-primary/15"
+                      : "bg-primary/10 rounded-tl-none border border-primary/5"
                       }`}
                   >
                     <p className="text-sm leading-relaxed select-invert whitespace-pre-line">{msg.content}</p>
