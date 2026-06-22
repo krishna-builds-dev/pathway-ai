@@ -363,7 +363,7 @@ export default function AdvisorPage() {
 
             {/* Bottom area */}
             <div className="absolute bottom-0 left-0 right-0 p-2 md:p-6 bg-linear-to-t from-white/95 via-white/80 to-transparent">
-              <div className="flex gap-2 md:gap-3 overflow-x-auto pb-3 md:pb-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] [scrollbar-width:none]">
+              <div className="flex gap-2 md:gap-3 overflow-x-auto pb-3 md:pb-6 [&::-webkit-scrollbar]:hidden [-ms-overflow-style:none] scrollbar-none">
                 {chips.map((chip) => (
                   <button
                     key={chip.id}

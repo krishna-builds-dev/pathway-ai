@@ -1,68 +1,75 @@
 # Pathway
 
-Smart platform helping international students plan their study abroad journey — from choosing a country to building a standout application.
+**Pathway** is a smart, streamlined platform designed to guide international students through the complexities of studying abroad. By transforming dense academic and immigration requirements into clear, actionable steps, Pathway helps students explore destinations, discover courses, and prepare high-quality application materials—all within a single, intuitive dashboard.
 
-## Overview
+---
 
-Pathway simplifies the study abroad process by turning academic and immigration requirements into clear, student-friendly guidance. Students can explore countries, cities, and university courses, then use built‑in tools to prepare their actual application materials — all from one dashboard.
+## 🚀 What it does
 
-## Features
+- **Career Advisor** — Personalized guidance based on your profile. Not generic advice, but direction that actually fits you.
+- **SOP & Resume Builders** — Automated tools that help you draft a Statement of Purpose and a resume that meets international standards.
+- **Visa & Application Tracking** — Checklists for the documents you need, organized by country, so nothing slips through the cracks.
+- **University & City Explorer** — Compare courses and cities side by side before you commit to anything.
+- **Secure Auth** — Sign in with Google or GitHub, no friction.
 
-- **Google & GitHub OAuth** — secure sign-in, no password management needed
-- **Career Advisor** — rule‑based guidance tailored to the student's profile
-- **SOP Builder** — generates a draft Statement of Purpose from profile data
-- **Resume Builder** — builds a professional resume formatted for international applications
-- **Visa Checklist** — tracks required documents for the student's target country
-- **Country & City Explorer** — compare destinations side by side
-- **Course Discovery** — browse university courses with filtering
-- **Profile-aware tools** — every tool reads the student's saved profile to personalise output
+---
 
-> **Note on AI:** The current public version uses smart rule‑based logic. Real AI integration (Gemini / DeepSeek) is available behind an optional `NODE_ENV` flag for development.
+## 🧠 How the AI works
 
-## Tech Stack
+Pathway uses a dual-engine approach — reliability first, AI when it makes sense.
 
-- **Framework:** Next.js (App Router)
-- **Language:** TypeScript
-- **Database & Auth:** Supabase
-- **Rate Limiting:** Upstash Redis
-- **Error Monitoring:** Sentry
-- **Styling:** Tailwind CSS
-- **Deployment:** Vercel
+- **Public version** runs on rule-based logic. It's deterministic, fast, and doesn't hit token limits or rack up API costs.
+- **AI layer (Gemini)** is available for development and custom deployments. Flip it on with `NODE_ENV=development` in your environment config.
 
-## Quick Start
+The intelligence layer is modular, so you can swap or upgrade models without touching the rest of the app. Just update your environment variables — no refactoring needed.
 
-### 1. Clone the repository
+---
 
+## 🛠 Tech Stack
+
+*   **Framework:** Next.js (App Router)
+*   **Language:** TypeScript
+*   **Database & Auth:** Supabase
+*   **Rate Limiting:** Upstash Redis
+*   **Error Monitoring:** Sentry
+*   **Styling:** Tailwind CSS
+*   **Deployment:** Vercel
+
+---
+
+## ⚡ Getting started
+
+### 1. Clone the repo
 ```bash
 git clone <repository-url>
 cd pathway-ai
 ```
 
 ### 2. Install dependencies
-
 ```bash
 npm install
 ```
 
-### 3. Configure environment variables
+### 3. Set up your environment
 
-Copy `.env.example` to `.env.local` and fill in your own credentials:
+Copy `.env.example` to `.env.local` and fill in your credentials:
 
 ```bash
 cp .env.example .env.local
 ```
 
-See `.env.example` for the full list of required keys (Supabase, Gemini, Google OAuth, Upstash, Sentry).
+You'll need keys for Supabase, Gemini, Google OAuth, Upstash, and Sentry. The example file has the full list.
 
-### 4. Run the development server
-
+### 4. Start the dev server
 ```bash
 npm run dev
 ```
 
-Open [http://localhost:3000](http://localhost:3000) to see the application.
+Then open [http://localhost:3000](http://localhost:3000) and you're in.
 
-## Project Structure
+---
+
+## 📂 Project structure
 
 ```
 app/            Next.js App Router pages and API routes
@@ -75,8 +82,10 @@ types/          Shared TypeScript types
 public/         Static assets
 ```
 
-## Built By
+---
+
+## ✍️ Built by
 
 [Krishna builds dev](https://github.com/krishna-builds-dev) — Full Stack Developer
-  
-Open for freelance work → [krishna builds dev](https://www.krishna011.com.np)
+
+Available for freelance work → [Krishna builds dev](https://www.krishna011.com.np)
