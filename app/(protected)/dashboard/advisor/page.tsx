@@ -298,7 +298,7 @@ export default function AdvisorPage() {
             {/* Messages */}
             <div className="grow overflow-y-auto custom-scrollbar p-3 md:px-8 md:py-0 space-y-4 md:space-y-6 pb-32 md:pb-48">
               {messages.length === 0 && !isProcessing && (
-                <div className="flex gap-3 md:gap-4 fade-in">
+                <div className="flex gap-3 md:gap-4 fade-in pt-[35px]">
                   <div className="w-8 h-8 md:w-10 md:h-10 rounded-xl bg-primary/10 border border-primary/5 flex items-center justify-center shrink-0 shadow-sm">
                     <span className="material-symbols-outlined text-primary text-lg md:text-xl">smart_toy</span>
                   </div>
