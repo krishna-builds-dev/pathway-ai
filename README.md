@@ -60,7 +60,9 @@ cp .env.example .env.local
 
 You'll need keys for Supabase, Gemini, Google OAuth, Upstash, and Sentry. The example file has the full list.
 
-### 4. Start the dev server
+### 4. copy schema.sql from database folder to supabase SQL editor and run it.
+
+### 5. Start the dev server
 ```bash
 npm run dev
 ```

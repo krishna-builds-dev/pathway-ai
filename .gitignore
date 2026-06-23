@@ -49,6 +49,7 @@ DOCUMENTATION.md
 MIGRATION_GUIDE.md
 
 *.sql
+!schema.sql
 
 # Sentry Config File
 .env.sentry-build-plugin
