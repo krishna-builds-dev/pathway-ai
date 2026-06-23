@@ -60,7 +60,17 @@ cp .env.example .env.local
 
 You'll need keys for Supabase, Gemini, Google OAuth, Upstash, and Sentry. The example file has the full list.
 
-### 4. copy schema.sql from database folder to supabase SQL editor and run it.
+### 4. Copy Schema to Supabase
+ 
+1. Open your Supabase project dashboard
+2. Go to **SQL Editor** (left sidebar)
+3. Click **New Query**
+4. Open `database/schema.sql` from this repository
+5. Copy the entire content
+6. Paste it into the Supabase SQL Editor
+7. Click **Run**
+
+All tables, enums, and constraints will be created automatically.
 
 ### 5. Start the dev server
 ```bash
